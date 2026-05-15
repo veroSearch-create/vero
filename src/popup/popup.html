@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Search Sanity</title>
+  <title>Vero</title>
   <link rel="stylesheet" href="../styles/tokens.css">
   <link rel="stylesheet" href="../styles/reset.css">
   <link rel="stylesheet" href="../styles/components.css">
@@ -15,21 +15,23 @@
     <!-- ── Main view ── -->
     <div id="view-main">
       <header class="popup-header">
-        <span class="popup-title">Search Sanity</span>
+        <span class="popup-title">Vero</span>
         <span class="status-pill status-active" id="status-pill">● Active</span>
       </header>
 
       <section class="popup-section">
         <p class="section-caption">Cleanup</p>
         <div class="card">
-          <label class="row" role="switch" aria-checked="true" tabindex="0">
+          <label class="row" role="switch" aria-checked="true" tabindex="0"
+            data-tooltip="Hides the AI-generated summary box that appears above real search results.">
             <span class="row-icon" id="icon-ai" aria-hidden="true"></span>
             <span class="row-label">Hide AI Overviews</span>
             <span class="toggle" data-pref="hideOverview" aria-hidden="true">
               <span class="toggle-track"><span class="toggle-thumb"></span></span>
             </span>
           </label>
-          <label class="row" role="switch" aria-checked="false" tabindex="0">
+          <label class="row" role="switch" aria-checked="false" tabindex="0"
+            data-tooltip="Appends udm=14 to every Google search URL, skipping AI features and showing only traditional web results.">
             <span class="row-icon" id="icon-web" aria-hidden="true"></span>
             <span class="row-label">Force Web-only mode</span>
             <span class="toggle" data-pref="forceWebMode" aria-hidden="true">
@@ -42,14 +44,16 @@
       <section class="popup-section">
         <p class="section-caption">Ranking</p>
         <div class="card">
-          <label class="row" role="switch" aria-checked="true" tabindex="0">
+          <label class="row" role="switch" aria-checked="true" tabindex="0"
+            data-tooltip="Visually dims results from known SEO-farm and content-mill domains so real sources stand out.">
             <span class="row-icon" id="icon-spam" aria-hidden="true"></span>
             <span class="row-label">Demote spam domains</span>
             <span class="toggle" data-pref="demoteSpam" aria-hidden="true">
               <span class="toggle-track"><span class="toggle-thumb"></span></span>
             </span>
           </label>
-          <label class="row" role="switch" aria-checked="true" tabindex="0">
+          <label class="row" role="switch" aria-checked="true" tabindex="0"
+            data-tooltip="Highlights Reddit, Hacker News, and other forum results with a subtle badge so you can find real discussions faster.">
             <span class="row-icon" id="icon-forum" aria-hidden="true"></span>
             <span class="row-label">Boost forum results</span>
             <span class="toggle" data-pref="boostForums" aria-hidden="true">
@@ -101,6 +105,7 @@
     </div>
 
   </div>
+  <div id="tooltip" class="tooltip" aria-hidden="true"></div>
   <script type="module" src="popup.js"></script>
 </body>
 </html>

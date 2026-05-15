@@ -19,7 +19,7 @@
 }
 
 .toggle.on .toggle-track {
-  background: var(--accent);
+  background: var(--accent-grad);
 }
 
 .toggle-thumb {
@@ -53,7 +53,7 @@
   height: 32px;
   padding: 0 var(--space-3);
   border-radius: var(--r-sm);
-  background: var(--accent);
+  background: var(--accent-grad);
   color: white;
   font-size: var(--t-label);
   font-weight: 500;
@@ -91,10 +91,11 @@
 
 .section-caption {
   font-size: var(--t-caption);
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  opacity: 0.7;
   padding: var(--space-5) var(--space-4) var(--space-1);
 }
 

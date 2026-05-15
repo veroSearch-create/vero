@@ -6,14 +6,19 @@ body {
   line-height: 1.35;
   min-width: 360px;
   max-width: 360px;
+  background: var(--bg-window);
+  overflow: hidden;
 }
 
 .popup-window {
+  position: relative;
   width: 360px;
   min-height: 80px;
   max-height: 600px;
   overflow-y: auto;
   background: var(--bg-window);
+  background-image: radial-gradient(ellipse at 10% 0%, var(--tint-blue) 0%, transparent 60%),
+                    radial-gradient(ellipse at 90% 100%, var(--tint-indigo) 0%, transparent 60%);
   backdrop-filter: blur(40px) saturate(180%);
   -webkit-backdrop-filter: blur(40px) saturate(180%);
   border-radius: var(--r-lg);
@@ -52,8 +57,18 @@ body {
   border-radius: var(--r-pill);
   letter-spacing: 0;
 }
-.status-active { color: var(--success); }
-.status-paused { color: var(--text-tertiary); }
+.status-active {
+  color: var(--success);
+  background: rgba(52, 199, 89, 0.10);
+  padding: 2px var(--space-2);
+  border-radius: var(--r-pill);
+}
+.status-paused {
+  color: var(--text-tertiary);
+  background: var(--bg-hover);
+  padding: 2px var(--space-2);
+  border-radius: var(--r-pill);
+}
 
 /* Section */
 .popup-section {
@@ -138,6 +153,32 @@ body {
   cursor: default;
 }
 .row-domain:hover { background: var(--bg-hover); }
+
+/* Tooltip */
+.tooltip {
+  position: fixed;
+  z-index: 200;
+  width: 220px;
+  padding: var(--space-2) var(--space-3);
+  background: var(--bg-elevated);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-popup);
+  font-size: var(--t-caption);
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity var(--dur-micro) var(--ease-standard),
+              transform var(--dur-micro) var(--ease-standard);
+}
+.tooltip.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* Remove button */
 .btn-icon {

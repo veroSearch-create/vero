@@ -11,10 +11,50 @@ import {
 
 async function init(): Promise<void> {
   injectIcons();
+  initTooltip();
   const prefs = await getPrefs();
   initToggles(prefs);
   updateStatusPill(prefs);
   initManagePanel(prefs);
+}
+
+function initTooltip(): void {
+  const tip = document.getElementById('tooltip');
+  if (!tip) return;
+
+  let hideTimer: ReturnType<typeof setTimeout> | null = null;
+
+  document.querySelectorAll<HTMLElement>('[data-tooltip]').forEach((el) => {
+    el.addEventListener('mouseenter', () => {
+      if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
+
+      tip.textContent = el.dataset.tooltip ?? '';
+      tip.classList.remove('visible');
+
+      /* Measure off-screen first to get real dimensions */
+      tip.style.visibility = 'hidden';
+      tip.style.top  = '-9999px';
+      tip.style.left = '0';
+
+      const tipH  = tip.offsetHeight;
+      const tipW  = tip.offsetWidth;
+      const r     = el.getBoundingClientRect();
+      const vw    = window.innerWidth;
+
+      const left = Math.min(Math.max(r.left + 8, 8), vw - tipW - 8);
+      const top  = r.top > tipH + 12 ? r.top - tipH - 8 : r.bottom + 8;
+
+      tip.style.top        = `${top}px`;
+      tip.style.left       = `${left}px`;
+      tip.style.visibility = '';
+
+      requestAnimationFrame(() => tip.classList.add('visible'));
+    });
+
+    el.addEventListener('mouseleave', () => {
+      hideTimer = setTimeout(() => tip.classList.remove('visible'), 80);
+    });
+  });
 }
 
 function injectIcons(): void {
