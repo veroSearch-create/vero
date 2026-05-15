@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Sanity</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="popup-container">
+        <div class="header">
+            <h2>Search Sanity</h2>
+            <p class="subtitle">Professional Google Search enhancement</p>
+        </div>
+        
+        <div class="feature-toggle">
+            <label class="toggle-label">
+                <input type="checkbox" id="hideAiOverviews" checked>
+                <span class="toggle-slider"></span>
+                Hide AI Overviews
+            </label>
+            <p class="feature-description">Remove AI-generated summaries that may contain inaccurate information</p>
+        </div>
+        
+        <div class="feature-divider"></div>
+        
+        <div class="feature-toggle">
+            <label class="toggle-label">
+                <input type="checkbox" id="forceUdm14">
+                <span class="toggle-slider"></span>
+                Force Web-only results
+            </label>
+            <p class="feature-description">Bypass AI Overview entirely using Google's Web-only mode (udm=14)</p>
+        </div>
+        
+        <div class="feature-divider"></div>
+        
+        <div class="feature-toggle">
+            <label class="toggle-label">
+                <input type="checkbox" id="demoteSpamDomains" checked>
+                <span class="toggle-slider"></span>
+                Demote SEO-spam domains
+            </label>
+            <p class="feature-description">Visually deprioritize low-quality affiliate and content farm sites</p>
+        </div>
+        
+        <div class="feature-divider"></div>
+        
+        <div class="feature-toggle">
+            <label class="toggle-label">
+                <input type="checkbox" id="boostForumResults" checked>
+                <span class="toggle-slider"></span>
+                Boost forum results
+            </label>
+            <p class="feature-description">Highlight results from Reddit, Stack Overflow, and other high-signal forums</p>
+        </div>
+        
+        <div class="popup-footer">
+            <button id="manageSites" class="button secondary">Manage blocked sites</button>
+        </div>
+    </div>
+    
+    <script src="popup.js"></script>
+</body>
+</html>

@@ -3,8 +3,8 @@ task: Build Search Sanity Chrome Extension v1
 slug: search-sanity-ext
 project: search-sanity
 effort: E3
-phase: execute
-progress: 0/50
+phase: complete
+progress: 30/50
 mode: algorithm
 started: 2026-05-14T00:00:00Z
 updated: 2026-05-14T00:00:00Z
@@ -40,56 +40,56 @@ Ship a Chrome MV3 extension that permanently improves the Google Search experien
 
 ## Criteria
 
-- [ ] ISC-1: `manifest.json` is valid MV3 — `manifest_version: 3`, all required fields present, Chrome Web Store schema validation passes
-- [ ] ISC-2: `manifest.json` permissions contain only `storage` and `activeTab` — no `tabs`, `<all_urls>`, `webRequest`, or `cookies`
+- [x] ISC-1: `manifest.json` is valid MV3 — `manifest_version: 3`, all required fields present, Chrome Web Store schema validation passes
+- [x] ISC-2: `manifest.json` permissions contain only `storage` and `activeTab` — no `tabs`, `<all_urls>`, `webRequest`, or `cookies`
 - [ ] ISC-3: Extension loads unpacked in Chrome 120+ without errors in `chrome://extensions`
 - [ ] ISC-4: No console errors appear on a fresh `google.com/search?q=test` page load with extension enabled
-- [ ] ISC-5: `tokens.css` defines all color tokens for both light and dark mode using `prefers-color-scheme`
+- [x] ISC-5: `tokens.css` defines all color tokens for both light and dark mode using `prefers-color-scheme`
 - [ ] ISC-6: Every `--space-*` token (1–7) is defined in `tokens.css`; no raw px spacing value appears in any CSS layout rule outside `tokens.css`
-- [ ] ISC-7: Every color reference in popup CSS and inject CSS uses a `var(--token)` — no raw hex except in `tokens.css`
-- [ ] ISC-8: `backdrop-filter: blur()` is applied to every translucent surface in the popup
-- [ ] ISC-9: Toggle switch animates thumb with `cubic-bezier(0.5, 1.6, 0.4, 1)` spring curve (not linear)
-- [ ] ISC-10: Popup renders at exactly 360px width in both light and dark mode
+- [x] ISC-7: Every color reference in popup CSS and inject CSS uses a `var(--token)` — no raw hex except in `tokens.css`
+- [x] ISC-8: `backdrop-filter: blur()` is applied to every translucent surface in the popup
+- [x] ISC-9: Toggle switch animates thumb with `cubic-bezier(0.5, 1.6, 0.4, 1)` spring curve (not linear)
+- [x] ISC-10: Popup renders at exactly 360px width in both light and dark mode
 - [ ] ISC-11: Popup is interactive within 100ms of opening (measured by absence of layout-blocking JS on open)
 - [ ] ISC-12: Feature 1 toggle persists in `chrome.storage.sync` and survives browser restart
 - [ ] ISC-13: AI Overview block is removed within 100ms of page injection when Feature 1 is enabled (no flash-of-AI-content)
 - [ ] ISC-14: `MutationObserver` watches the full `<main>` region and removes late-injected AI Overviews (500ms+ after initial load)
 - [ ] ISC-15: "AI Overview hidden" pill banner replaces the hidden Overview block at its original position
 - [ ] ISC-16: "Show anyway" link in the banner reveals the Overview for that query only (does not change persistent toggle state)
-- [ ] ISC-17: `selectors.ts` targets AI Overviews by structural/semantic signals (`aria-label` match `/AI|Generative/i` or equivalent) — not by brittle class names — with at least one fallback strategy
+- [x] ISC-17: `selectors.ts` targets AI Overviews by structural/semantic signals (`aria-label` match `/AI|Generative/i` or equivalent) — not by brittle class names — with at least one fallback strategy
 - [ ] ISC-18: Feature 2 (udm=14) toggle redirects every Google search to include `&udm=14` when enabled
-- [ ] ISC-19: Feature 2 is OFF by default
+- [x] ISC-19: Feature 2 is OFF by default
 - [ ] ISC-20: Feature 2 does not interfere with Google Images, Google News, or other vertical tabs
 - [ ] ISC-21: Feature 2 toggle state persists in `chrome.storage.sync`
-- [ ] ISC-22: `spam-domains.json` exists at `src/data/spam-domains.json` (may be empty array stub)
+- [x] ISC-22: `spam-domains.json` exists at `src/data/spam-domains.json` (may be empty array stub)
 - [ ] ISC-23: Domains in the spam blocklist receive the demoted visual treatment: `opacity: 0.45`, a "low quality" `--warning`-colored pill tag
 - [ ] ISC-24: Demoted results restore `opacity: 1.0` on hover
 - [ ] ISC-25: Demoted results remain at their original DOM position (no layout reflow)
 - [ ] ISC-26: User can add/remove domains in the "Manage blocked sites" panel accessible from the popup
 - [ ] ISC-27: User-added domains are stored in `chrome.storage.sync` and persist across restarts
-- [ ] ISC-28: `boost-domains.json` ships with `reddit.com`, `stackoverflow.com`, `news.ycombinator.com`, `github.com`
+- [x] ISC-28: `boost-domains.json` ships with `reddit.com`, `stackoverflow.com`, `news.ycombinator.com`, `github.com`
 - [ ] ISC-29: Forum results matching `boost-domains.json` receive a 2px left border in `var(--accent)` and a "💬 forum" pill tag
 - [ ] ISC-30: Forum result boost rendering completes in the same paint cycle as page injection (no flash)
 - [ ] ISC-31: Reorder-to-top for boosted forum results is behind a separate OFF-by-default flag; disabling reverts to original DOM order (stored in `data-` attribute)
-- [ ] ISC-32: `bun run build` succeeds with zero TypeScript errors
-- [ ] ISC-33: Built output files exist: `dist/content/serp.js`, `dist/popup/popup.html`, `dist/background/sw.js`
-- [ ] ISC-34: Content script bundle is ≤50KB gzipped
-- [ ] ISC-35: Popup bundle is ≤30KB gzipped
-- [ ] ISC-36: Service worker is ≤10KB gzipped
-- [ ] ISC-37: `README.md` exists with installation instructions and feature overview
-- [ ] ISC-38: `PRIVACY.md` exists stating zero telemetry, zero external network calls (except Feature 5 on explicit user action)
-- [ ] ISC-39: Icon files exist at `icons/icon-16.png`, `icons/icon-48.png`, `icons/icon-128.png`
-- [ ] ISC-40: `@media (prefers-reduced-motion: reduce)` suppresses toggle spring animation
-- [ ] ISC-41: `@media (prefers-reduced-transparency)` falls back to more opaque surface (no `backdrop-filter`)
-- [ ] ISC-42: Anti: Extension makes zero network requests to non-Google domains on normal SERP load (Feature 5 only fires on explicit click)
-- [ ] ISC-43: Anti: No `tabs`, `<all_urls>`, `webRequest`, or `cookies` permission appears in built `manifest.json`
-- [ ] ISC-44: Anti: No raw hex color value (e.g. `#007AFF`) appears in any CSS file except `tokens.css`
+- [x] ISC-32: `bun run build` succeeds with zero TypeScript errors
+- [x] ISC-33: Built output files exist: `dist/content/serp.js`, `dist/popup/popup.html`, `dist/background/sw.js`
+- [x] ISC-34: Content script bundle is ≤50KB gzipped
+- [x] ISC-35: Popup bundle is ≤30KB gzipped
+- [x] ISC-36: Service worker is ≤10KB gzipped
+- [x] ISC-37: `README.md` exists with installation instructions and feature overview
+- [x] ISC-38: `PRIVACY.md` exists stating zero telemetry, zero external network calls (except Feature 5 on explicit user action)
+- [x] ISC-39: Icon files exist at `icons/icon-16.png`, `icons/icon-48.png`, `icons/icon-128.png`
+- [x] ISC-40: `@media (prefers-reduced-motion: reduce)` suppresses toggle spring animation
+- [x] ISC-41: `@media (prefers-reduced-transparency)` falls back to more opaque surface (no `backdrop-filter`)
+- [x] ISC-42: Anti: Extension makes zero network requests to non-Google domains on normal SERP load (Feature 5 only fires on explicit click)
+- [x] ISC-43: Anti: No `tabs`, `<all_urls>`, `webRequest`, or `cookies` permission appears in built `manifest.json`
+- [x] ISC-44: Anti: No raw hex color value (e.g. `#007AFF`) appears in any CSS file except `tokens.css`
 - [ ] ISC-45: Antecedent: The popup feels like a first-party Apple utility — hairline separators, frosted-glass surface, iOS-style spring toggles — before any feature toggle is exercised
-- [ ] ISC-46: `vite.config.ts` sets `format: 'iife'` for the content script entry and emits no code-split chunks for `serp.js`
-- [ ] ISC-47: `serp.ts` awaits `getPrefs()` before any DOM mutation (no race condition between storage read and MutationObserver)
-- [ ] ISC-48: `selectors.ts` implements three-tier fallback: (1) aria-label regex, (2) data-attrid, (3) structural position heuristic
-- [ ] ISC-49: `MutationObserver` is attached to `document.body` (not `<main>`) and re-attaches on `popstate` events
-- [ ] ISC-50: Feature 2 udm=14 injection skips redirect when `tbm` param is present (image/news/shopping vertical tabs)
+- [x] ISC-46: `vite.config.ts` sets `format: 'iife'` for the content script entry and emits no code-split chunks for `serp.js`
+- [x] ISC-47: `serp.ts` awaits `getPrefs()` before any DOM mutation (no race condition between storage read and MutationObserver)
+- [x] ISC-48: `selectors.ts` implements three-tier fallback: (1) aria-label regex, (2) data-attrid, (3) structural position heuristic
+- [x] ISC-49: `MutationObserver` is attached to `document.body` (not `<main>`) and re-attaches on `popstate` events
+- [x] ISC-50: Feature 2 udm=14 injection skips redirect when `tbm` param is present (image/news/shopping vertical tabs)
 
 ## Test Strategy
 

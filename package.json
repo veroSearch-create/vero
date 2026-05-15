@@ -1,0 +1,16 @@
+{
+  "name": "search-sanity",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "bun run scripts/gen-icons.ts && vite build && vite build --config vite.config.content.ts",
+    "dev": "vite build --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.268",
+    "@types/node": "^25.8.0",
+    "typescript": "^5.4.0",
+    "vite": "^5.2.0"
+  }
+}

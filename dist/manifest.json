@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Search Sanity",
+  "version": "1.0.0",
+  "description": "Fix Google Search: hide AI Overviews, block spam, boost forums.",
+  "permissions": ["storage", "activeTab"],
+  "host_permissions": ["https://www.google.com/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://www.google.com/search*"],
+      "js": ["content/serp.js"],
+      "css": ["content/inject.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Search Sanity",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background/sw.js",
+    "type": "module"
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  }
+}

@@ -1,0 +1,81 @@
+/* ═══ Search Sanity Design Tokens ═══ */
+
+:root {
+  /* Spacing — 4px base grid */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+
+  /* Border radius */
+  --r-sm:   6px;
+  --r-md:   10px;
+  --r-lg:   14px;
+  --r-pill: 999px;
+
+  /* Shadows */
+  --shadow-popup: 0 12px 48px rgba(0, 0, 0, 0.18), 0 0 0 0.5px rgba(0, 0, 0, 0.08);
+  --shadow-card:  0 1px 3px rgba(0, 0, 0, 0.04), 0 0 0 0.5px rgba(0, 0, 0, 0.06);
+
+  /* Motion */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring:   cubic-bezier(0.5, 1.6, 0.4, 1);
+  --dur-micro:   120ms;
+  --dur-base:    220ms;
+  --dur-overlay: 320ms;
+
+  /* Typography */
+  --font-system: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+  --t-display: 1.75rem;
+  --t-title:   1.0625rem;
+  --t-body:    0.8125rem;
+  --t-label:   0.8125rem;
+  --t-caption: 0.6875rem;
+
+  /* Light mode colors */
+  --bg-window:      rgba(246, 246, 246, 0.72);
+  --bg-elevated:    rgba(255, 255, 255, 0.78);
+  --bg-hover:       rgba(0, 0, 0, 0.04);
+  --text-primary:   rgba(0, 0, 0, 0.88);
+  --text-secondary: rgba(0, 0, 0, 0.52);
+  --text-tertiary:  rgba(0, 0, 0, 0.32);
+  --separator:      rgba(0, 0, 0, 0.08);
+  --accent:         #007AFF;
+  --success:        #34C759;
+  --warning:        #FF9500;
+  --danger:         #FF3B30;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-window:      rgba(28, 28, 30, 0.78);
+    --bg-elevated:    rgba(44, 44, 46, 0.70);
+    --bg-hover:       rgba(255, 255, 255, 0.06);
+    --text-primary:   rgba(255, 255, 255, 0.92);
+    --text-secondary: rgba(255, 255, 255, 0.55);
+    --text-tertiary:  rgba(255, 255, 255, 0.30);
+    --separator:      rgba(255, 255, 255, 0.10);
+    --accent:         #0A84FF;
+    --success:        #30D158;
+    --warning:        #FF9F0A;
+    --danger:         #FF453A;
+  }
+}
+
+/* Reduced transparency — opaque fallback, no backdrop-filter */
+@media (prefers-reduced-transparency: reduce) {
+  :root {
+    --bg-window:   rgb(246, 246, 246);
+    --bg-elevated: rgb(255, 255, 255);
+  }
+}
+
+@media (prefers-color-scheme: dark) and (prefers-reduced-transparency: reduce) {
+  :root {
+    --bg-window:   rgb(28, 28, 30);
+    --bg-elevated: rgb(44, 44, 46);
+  }
+}

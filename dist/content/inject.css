@@ -1,0 +1,91 @@
+/* Search Sanity — In-SERP injection styles
+   Standalone: no @import. All token values inlined.
+   Chrome loads this as a content_scripts CSS entry. */
+
+:root {
+  --ss-bg-elevated:    rgba(255, 255, 255, 0.78);
+  --ss-separator:      rgba(0, 0, 0, 0.08);
+  --ss-accent:         #007AFF;
+  --ss-warning:        #FF9500;
+  --ss-text-secondary: rgba(0, 0, 0, 0.52);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ss-bg-elevated:    rgba(44, 44, 46, 0.70);
+    --ss-separator:      rgba(255, 255, 255, 0.10);
+    --ss-accent:         #0A84FF;
+    --ss-warning:        #FF9F0A;
+    --ss-text-secondary: rgba(255, 255, 255, 0.55);
+  }
+}
+
+/* ── AI Overview hidden banner ── */
+.ss-overview-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+  background: var(--ss-bg-elevated);
+  border-radius: 999px;
+  /* Hairline border via box-shadow — renders at 0.5px on retina */
+  box-shadow: inset 0 0 0 0.5px var(--ss-separator);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ss-text-secondary);
+  margin: 8px 0;
+  cursor: default;
+}
+
+.ss-show-anyway {
+  color: var(--ss-accent);
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 500;
+}
+.ss-show-anyway:hover { text-decoration: underline; }
+
+/* ── Demoted result ── */
+.ss-demoted {
+  opacity: 0.45;
+  transition: opacity 120ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.ss-demoted:hover { opacity: 1 !important; }
+
+.ss-tag-spam {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ss-warning);
+  box-shadow: inset 0 0 0 0.5px var(--ss-warning);
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+/* ── Boosted result ── */
+.ss-boosted {
+  border-left: 2px solid var(--ss-accent) !important;
+  padding-left: 12px !important;
+}
+
+.ss-tag-forum {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ss-accent);
+  box-shadow: inset 0 0 0 0.5px var(--ss-accent);
+  margin-left: 8px;
+  vertical-align: middle;
+}

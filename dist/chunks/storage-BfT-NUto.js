@@ -1,0 +1,1 @@
+const r={hideOverview:!0,forceWebMode:!1,demoteSpam:!0,boostForums:!0,reorderForums:!1,userBlocklist:[],userBoostlist:[]};async function o(){return new Promise(e=>{chrome.storage.sync.get(r,s=>{e(s)})})}async function t(e){return new Promise(s=>{chrome.storage.sync.set(e,s)})}export{o as g,t as s};

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Sanity</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-window">
+
+    <!-- ── Main view ── -->
+    <div id="view-main">
+      <header class="popup-header">
+        <span class="popup-title">Search Sanity</span>
+        <span class="status-pill status-active" id="status-pill">● Active</span>
+      </header>
+
+      <section class="popup-section">
+        <p class="section-caption">Cleanup</p>
+        <div class="card">
+          <label class="row" role="switch" aria-checked="true" tabindex="0">
+            <span class="row-icon" id="icon-ai" aria-hidden="true"></span>
+            <span class="row-label">Hide AI Overviews</span>
+            <span class="toggle" data-pref="hideOverview" aria-hidden="true">
+              <span class="toggle-track"><span class="toggle-thumb"></span></span>
+            </span>
+          </label>
+          <label class="row" role="switch" aria-checked="false" tabindex="0">
+            <span class="row-icon" id="icon-web" aria-hidden="true"></span>
+            <span class="row-label">Force Web-only mode</span>
+            <span class="toggle" data-pref="forceWebMode" aria-hidden="true">
+              <span class="toggle-track"><span class="toggle-thumb"></span></span>
+            </span>
+          </label>
+        </div>
+      </section>
+
+      <section class="popup-section">
+        <p class="section-caption">Ranking</p>
+        <div class="card">
+          <label class="row" role="switch" aria-checked="true" tabindex="0">
+            <span class="row-icon" id="icon-spam" aria-hidden="true"></span>
+            <span class="row-label">Demote spam domains</span>
+            <span class="toggle" data-pref="demoteSpam" aria-hidden="true">
+              <span class="toggle-track"><span class="toggle-thumb"></span></span>
+            </span>
+          </label>
+          <label class="row" role="switch" aria-checked="true" tabindex="0">
+            <span class="row-icon" id="icon-forum" aria-hidden="true"></span>
+            <span class="row-label">Boost forum results</span>
+            <span class="toggle" data-pref="boostForums" aria-hidden="true">
+              <span class="toggle-track"><span class="toggle-thumb"></span></span>
+            </span>
+          </label>
+        </div>
+      </section>
+
+      <div class="popup-footer">
+        <button class="link-row" id="btn-manage-sites">
+          <span class="link-row-label">Manage blocked sites</span>
+          <span class="link-row-chevron" id="icon-chevron" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ── Manage blocked sites panel ── -->
+    <div id="view-manage" hidden>
+      <header class="popup-header">
+        <button class="back-btn" id="btn-back" aria-label="Back to main">
+          <span id="icon-back" aria-hidden="true"></span>
+          <span>Back</span>
+        </button>
+        <span class="popup-title">Blocked Sites</span>
+      </header>
+
+      <div class="panel-content">
+        <section class="popup-section">
+          <div class="card">
+            <div class="row row-add" aria-label="Add blocked domain">
+              <input
+                type="text"
+                id="input-domain"
+                placeholder="example.com"
+                class="domain-input"
+                aria-label="Domain to block"
+                autocomplete="off"
+                spellcheck="false"
+              >
+              <button class="btn-primary btn-add" id="btn-add-domain">Add</button>
+            </div>
+          </div>
+        </section>
+        <section class="popup-section" id="section-blocked-list">
+          <!-- Populated by popup.js -->
+        </section>
+      </div>
+    </div>
+
+  </div>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
